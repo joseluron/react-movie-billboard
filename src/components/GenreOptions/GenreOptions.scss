@@ -1,0 +1,13 @@
+.genre-options-container {
+    width: 100%;
+
+    .genre-options-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        label {
+            padding: 0 5px;
+        }
+    }
+}
