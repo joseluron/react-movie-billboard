@@ -22,5 +22,6 @@ export interface INewMovieData {
 
 export interface IBillboardAction {
     type: string,
-    movie?: IMovie
+    movie?: IMovie,
+    movies?: Array<IMovie>
 }

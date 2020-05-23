@@ -37,6 +37,17 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
                 fetching: false,
                 movies: [...state.movies, action.movie]
             };
+        case AppConstants.DELETE_MOVIE:
+            return {
+                ...state,
+                fetching: true
+            };
+        case AppConstants.DELETED_MOVIE_SUCCESS:
+            return {
+                ...state,
+                fetching: false,
+                movies: action.movies
+            };
         default:
             return {
                 ...state
