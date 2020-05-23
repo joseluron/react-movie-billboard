@@ -15,6 +15,12 @@ export interface IMovie {
     order: number
 }
 
+export interface INewMovieData {
+    movieTitle: string,
+    movieGenres: Array<string>
+}
+
 export interface IBillboardAction {
-    type: string
+    type: string,
+    movie?: IMovie
 }

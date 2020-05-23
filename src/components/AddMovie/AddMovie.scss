@@ -1,0 +1,36 @@
+.add-movie-container {
+    width: 100%;
+
+    .add-movie-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        padding: 10px;
+
+        .inputs-family {
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+
+            .input-combo {
+                display: flex;
+                justify-content: space-between;
+                padding: 2px;
+
+                input {
+                    max-width: 150px;
+                }
+            }
+
+            .added-genres {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+
+                span {
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}

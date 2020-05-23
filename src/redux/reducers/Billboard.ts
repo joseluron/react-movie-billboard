@@ -19,17 +19,28 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
             return {
                 ...state,
                 fetching: true,
-            }
+            };
         case AppConstants.BILLBOARD_FETCHED_SUCCESS:
             return {
                 ...state,
                 fetching: false,
                 fetched: true
-            }
+            };
+        case AppConstants.ADD_MOVIE:
+            return {
+                ...state,
+                fetching: true
+            };
+        case AppConstants.ADDED_MOVIE_SUCCESS:
+            return {
+                ...state,
+                fetching: false,
+                movies: [...state.movies, action.movie]
+            };
         default:
             return {
                 ...state
-            }
+            };
     }
 }
 
