@@ -7,7 +7,9 @@ const initialBillboard: IBillboardState = {
     fetching: true,
     movies: [
         {movieTitle: "The Help", movieGenres: ["Drama"], movieWatched: true, order: 1},
-        {movieTitle: "Mean Girls", movieGenres: ["Comedy"], movieWatched: false, order: 2}
+        {movieTitle: "Mean Girls", movieGenres: ["Comedy"], movieWatched: false, order: 2},
+        {movieTitle: "Saw", movieGenres: ["Horror"], movieWatched: true, order: 3},
+        {movieTitle: "Cloudy with a Chance of Meatballs", movieGenres: ["Animation"], movieWatched: false, order: 4}
     ]
 };
 
