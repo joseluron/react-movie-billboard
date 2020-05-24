@@ -5,7 +5,8 @@ export interface IAppState {
 export interface IBillboardState {
     fetched: boolean,
     fetching: boolean,
-    movies: Array<IMovie>
+    movies: Array<IMovie>,
+    searchedMovie: string
 }
 
 export interface IMovie {
@@ -23,5 +24,6 @@ export interface INewMovieData {
 export interface IBillboardAction {
     type: string,
     movie?: IMovie,
-    movies?: Array<IMovie>
+    movies?: Array<IMovie>,
+    searchedMovie?: string
 }

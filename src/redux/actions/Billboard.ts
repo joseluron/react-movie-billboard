@@ -43,6 +43,19 @@ const erasedMovie = (erasedMovieList: Array<IMovie>): AnyAction => {
     };
 };
 
+const findMovie = (): AnyAction => {
+    return {
+        type: AppConstants.SEARCH_MOVIE
+    };
+};
+
+const foundMovie = (searchedMovie: string): AnyAction => {
+    return {
+        type: AppConstants.SEARCHED_MOVIE_SUCCESS,
+        searchedMovie
+    };
+};
+
 // ACTIONS
 export const getBillboard = () => (dispatch: Store['dispatch']) => {
     dispatch(fetchBillboard());
@@ -75,5 +88,12 @@ export const deleteMovie = (movieOrder: number) => (dispatch: Store['dispatch'])
             return movie;
         });
         dispatch(erasedMovie(reorderedMovies));
+    }, 3000);
+};
+
+export const searchMovie = (toSearchMovie: string) => (dispatch: Store['dispatch']) => {
+    dispatch(findMovie());
+    setTimeout(() => {
+        dispatch(foundMovie(toSearchMovie));
     }, 3000);
 };

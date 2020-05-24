@@ -10,7 +10,8 @@ const initialBillboard: IBillboardState = {
         {movieTitle: "Mean Girls", movieGenres: ["comedy"], movieWatched: false, order: 2},
         {movieTitle: "Saw", movieGenres: ["horror"], movieWatched: true, order: 3},
         {movieTitle: "Cloudy with a Chance of Meatballs", movieGenres: ["animation"], movieWatched: false, order: 4}
-    ]
+    ],
+    searchedMovie: ''
 };
 
 const billboard = (state = initialBillboard, action: IBillboardAction) => {
@@ -35,7 +36,8 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
             return {
                 ...state,
                 fetching: false,
-                movies: [...state.movies, action.movie]
+                movies: [...state.movies, action.movie],
+                searchedMovie: ''
             };
         case AppConstants.DELETE_MOVIE:
             return {
@@ -46,7 +48,19 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
             return {
                 ...state,
                 fetching: false,
-                movies: action.movies
+                movies: action.movies,
+                searchedMovie: ''
+            };
+        case AppConstants.SEARCH_MOVIE:
+            return {
+                ...state,
+                fetching: true
+            };
+        case AppConstants.SEARCHED_MOVIE_SUCCESS:
+            return {
+                ...state,
+                fetching: false,
+                searchedMovie: action.searchedMovie
             };
         default:
             return {

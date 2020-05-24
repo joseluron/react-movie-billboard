@@ -1,0 +1,14 @@
+.search-options-container {
+    width: 100%;
+
+    .search-options-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+
+        .search-input {
+            display: flex;
+            justify-content: flex-start;
+        }
+    }
+}

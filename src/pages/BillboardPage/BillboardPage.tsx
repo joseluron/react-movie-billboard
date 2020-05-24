@@ -5,19 +5,20 @@ import './BillboardPage.scss';
 import BillboardList from '../../components/BillboardList/BillboardList';
 import AddMovie from '../../components/AddMovie/AddMovie';
 
-import { getBillboard, addNewMovie, deleteMovie } from '../../redux/actions/Billboard';
+import { getBillboard, addNewMovie, deleteMovie, searchMovie } from '../../redux/actions/Billboard';
 import { IAppState, IBillboardState } from '../../App.types';
 
 interface IBillboardPageProps {
     billboard: IBillboardState,
     getBillboard: Function,
     addNewMovie: Function,
-    deleteMovie: Function
+    deleteMovie: Function,
+    searchMovie: Function
 }
 
 const BillboardPage = (props: IBillboardPageProps) => {
-    const { getBillboard, addNewMovie, deleteMovie, billboard } = props;
-    const { fetched, fetching, movies } = billboard;
+    const { getBillboard, addNewMovie, deleteMovie, searchMovie, billboard } = props;
+    const { fetched, fetching, movies, searchedMovie } = billboard;
 
     useEffect(() => {
         if (!fetched) {
@@ -29,14 +30,14 @@ const BillboardPage = (props: IBillboardPageProps) => {
         <div className="billboard-page-container">
             <div className="billboard-page-wrapper">
                 <AddMovie addNewMovie={addNewMovie} />
-                <BillboardList movies={movies} fetching={fetching} deleteMovie={deleteMovie} />
+                <BillboardList movies={movies} searchedMovie={searchedMovie} fetching={fetching} deleteMovie={deleteMovie} searchMovie={searchMovie} />
             </div>
         </div>
     );
-}
+};
 
 const mapStateToProps = (state: IAppState) => ({
     billboard: state.billboard
 });
 
-export default connect( mapStateToProps, { getBillboard, addNewMovie, deleteMovie } )(BillboardPage);
+export default connect( mapStateToProps, { getBillboard, addNewMovie, deleteMovie, searchMovie } )(BillboardPage);
