@@ -63,6 +63,19 @@ const watchedMovie = (watchedMovies: Array<IMovie>): AnyAction => {
     };
 };
 
+const changeMovie = (): AnyAction => {
+    return {
+        type: AppConstants.EDIT_MOVIE
+    };
+};
+
+const changedMovie = (editedMovies: Array<IMovie>): AnyAction => {
+    return {
+        type: AppConstants.EDITED_MOVIE_SUCCESS,
+        movies: editedMovies
+    };
+};
+
 // ACTIONS
 export const getBillboard = () => (dispatch: Store['dispatch']) => {
     dispatch(fetchBillboard());
@@ -114,4 +127,18 @@ export const watchMovie = (movieOrder: number) => (dispatch: Store['dispatch']) 
         return movie;
     });
     dispatch(watchedMovie(toWatchMovie));
+};
+
+export const editMovie = (movieOrder: number, movieEditedTitle: string) => (dispatch: Store['dispatch']) => {
+    dispatch(changeMovie());
+    setTimeout(() => {
+        const currentStore: IAppState = store.getState();
+        const editedMovies = [...currentStore.billboard.movies].map(movie => {
+            if (movie.order === movieOrder) {
+                movie.movieTitle = movieEditedTitle;
+            }
+            return movie;
+        });
+        dispatch(changedMovie(editedMovies));
+    }, 3000);
 };

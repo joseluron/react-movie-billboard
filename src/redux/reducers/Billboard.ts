@@ -62,6 +62,18 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
                 fetching: false,
                 searchedMovie: action.searchedMovie
             };
+        case AppConstants.EDIT_MOVIE:
+            return {
+                ...state,
+                fetching: true
+            };
+        case AppConstants.EDITED_MOVIE_SUCCESS: {
+            return {
+                ...state,
+                fetching: false,
+                movies: action.movies
+            };
+        }
         case AppConstants.WATCHED_MOVIE:
             return {
                 ...state,

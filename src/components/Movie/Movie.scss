@@ -21,7 +21,7 @@
             padding-bottom: 5px;
         }
         
-        .movie-title {
+        .movie-title.movie-title-edit {
             padding-bottom: 5px;
             font-weight: bold;
         }
@@ -29,7 +29,7 @@
         .movie-poster {
             max-width: 100px;
             max-height: 175px;
-            padding-bottom: 5px;
+            padding: 5px 0;
         }
 
         .movie-genres {
@@ -45,6 +45,19 @@
             }
         }
 
+        .movie-editing {
+            display: inline-block;
+            
+            .edit-button {
+                background: $color-primary-4;
+                border: unset;
+                border-radius: 5px;
+                font-weight: bold;
+                font-family: 'Montserrat';
+                margin: 5px 2px;
+            }
+        }
+        
         .movie-delete-button {
             background: $color-primary-4;
             border: unset;
