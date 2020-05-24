@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './BillboardList.scss';
 
@@ -7,10 +7,11 @@ import GenreOptions from '../GenreOptions/GenreOptions';
 import SearchOptions from '../SearchOptions/SearchOption';
 import Loading from '../Loading/Loading';
 
-import { IMovie } from '../../App.types';
+import { IMovie, IMatchParams } from '../../App.types';
 
 interface IBillboardListProps {
-    movies: Array<IMovie>;
+    presetGenre: IMatchParams,
+    movies: Array<IMovie>,
     searchedMovie: string,
     fetching: boolean,
     deleteMovie: Function,
@@ -20,8 +21,14 @@ interface IBillboardListProps {
 }
 
 const BillboardList = (props: IBillboardListProps) => {
-    const { fetching, movies, searchedMovie, deleteMovie, searchMovie, watchMovie, editMovie } = props;
+    const { presetGenre, fetching, movies, searchedMovie, deleteMovie, searchMovie, watchMovie, editMovie } = props;
     const [genre, setGenre] = useState('');
+
+    useEffect(() => {
+        if (presetGenre['genre']) {
+            setGenre(presetGenre['genre']);
+        }
+    },[presetGenre]);
 
     const sortList = (): Array<IMovie> => {
         let orderedMovies = [...movies].sort((a, b) => (a.order > b.order ? 1 : -1)).sort((a, b) => (a.movieWatched === b.movieWatched ? 0 : a.movieWatched ? 1 : -1));

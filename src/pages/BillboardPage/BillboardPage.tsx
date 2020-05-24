@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import './BillboardPage.scss';
 
 import BillboardList from '../../components/BillboardList/BillboardList';
@@ -8,7 +9,7 @@ import AddMovie from '../../components/AddMovie/AddMovie';
 import { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie, editMovie } from '../../redux/actions/Billboard';
 import { IAppState, IBillboardState } from '../../App.types';
 
-interface IBillboardPageProps {
+interface IBillboardPageProps extends RouteComponentProps {
     billboard: IBillboardState,
     getBillboard: Function,
     addNewMovie: Function,
@@ -19,7 +20,7 @@ interface IBillboardPageProps {
 }
 
 const BillboardPage = (props: IBillboardPageProps) => {
-    const { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie, editMovie, billboard } = props;
+    const { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie, editMovie, billboard, match } = props;
     const { fetched, fetching, movies, searchedMovie } = billboard;
 
     useEffect(() => {
@@ -32,7 +33,7 @@ const BillboardPage = (props: IBillboardPageProps) => {
         <div className="billboard-page-container">
             <div className="billboard-page-wrapper">
                 <AddMovie addNewMovie={addNewMovie} />
-                <BillboardList movies={movies} searchedMovie={searchedMovie} fetching={fetching} deleteMovie={deleteMovie} searchMovie={searchMovie} watchMovie={watchMovie} editMovie={editMovie} />
+                <BillboardList movies={movies} presetGenre={match.params} searchedMovie={searchedMovie} fetching={fetching} deleteMovie={deleteMovie} searchMovie={searchMovie} watchMovie={watchMovie} editMovie={editMovie} />
             </div>
         </div>
     );

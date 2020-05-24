@@ -2,6 +2,10 @@ export interface IAppState {
     billboard: IBillboardState
 }
 
+export interface IMatchParams {
+    genre?: string
+}
+
 export interface IBillboardState {
     fetched: boolean,
     fetching: boolean,

@@ -47,7 +47,7 @@ const AddMovie = (props: IAddMovieProps) => {
                         <input type="text" placeholder="Movie title" value={toAddMovieTitle} onChange={e => setMovieTitle(e.target.value)} />
                     </div>
                     <div className="movie-genre input-combo">
-                        <span>Genres: </span>
+                        <span>Genre(s): </span>
                         <input type="text" placeholder="Movie genre" value={toAddMovieGenre} onChange={e => setMovieGenre(e.target.value)} onKeyDown={e => addNewGenre(e)}/>
                     </div>
                     <div className="added-genres">
