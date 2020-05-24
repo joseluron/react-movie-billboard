@@ -1,14 +1,23 @@
+@import '../../theme.scss';
+
 .search-options-container {
     width: 100%;
-
+    
     .search-options-wrapper {
         display: flex;
         justify-content: center;
-        flex-direction: row;
 
         .search-input {
-            display: flex;
-            justify-content: flex-start;
+            display: inline-block;
+
+            button {
+                background: $color-primary-4;
+                border: unset;
+                border-radius: 5px;
+                font-weight: bold;
+                font-family: 'Montserrat';
+                margin-left: 5px;
+            }
         }
     }
 }

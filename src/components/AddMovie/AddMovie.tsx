@@ -53,7 +53,7 @@ const AddMovie = (props: IAddMovieProps) => {
                     <div className="added-genres">
                         {toAddMovieGenres.map(genre => <span key={genre}>{`#${genre}`}</span>)}
                     </div>
-                    <button onClick={addMovie}>Add New Movie</button>
+                    <button className="add-button" onClick={addMovie}>Add New Movie</button>
                 </div>
             </div>
         </div>

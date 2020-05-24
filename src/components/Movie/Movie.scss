@@ -1,6 +1,52 @@
+@import '../../theme.scss';
+
 .movie-container {
     margin: 10px auto;
-    width: 200px;
-    height: 100px;
-    border: 1px solid black;
+    max-width: 200px;
+    
+    .movie-wrapper {
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background: $color-primary-2;
+        color: $color-secondary-1;
+        font-family: 'Montserrat';
+
+        .movie-title {
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .movie-poster {
+            max-width: 100px;
+            max-height: 175px;
+            padding-bottom: 5px;
+        }
+
+        .movie-genres {
+            width: 100%;
+            display: contents;
+
+            .genres-tag {
+                font-weight: bold;
+            }
+            
+            span {
+                padding: 0 5px;
+            }
+        }
+
+        .movie-delete-button {
+            background: $color-primary-4;
+            border: unset;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            margin-top: 5px;
+        }
+    }
 }

@@ -1,21 +1,29 @@
+@import '../../theme.scss';
+
 .add-movie-container {
     width: 100%;
-
+    
     .add-movie-wrapper {
         display: flex;
         justify-content: center;
         flex-direction: row;
-        padding: 10px;
+        padding-bottom: 10px;
 
         .inputs-family {
             width: 250px;
             display: flex;
             flex-direction: column;
+            padding: 15px;
+            border-radius: 25px;;
+            border: 1px solid $color-primary-2;
+            background: $color-primary-2;
 
             .input-combo {
                 display: flex;
                 justify-content: space-between;
                 padding: 2px;
+                color: $color-secondary-1;
+                font-family: 'Montserrat';
 
                 input {
                     max-width: 150px;
@@ -26,10 +34,21 @@
                 display: flex;
                 justify-content: flex-start;
                 flex-direction: column;
+                padding-bottom: 15px;                
 
                 span {
                     padding-left: 15px;
+                    color: $color-secondary-1;
                 }
+            }
+
+            .add-button {
+                font-family: 'Montserrat';
+                font-size: 15px;
+                font-weight: bold;
+                background: $color-primary-4;
+                border: unset;
+                border-radius: 5px;
             }
         }
     }

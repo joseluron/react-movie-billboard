@@ -1,13 +1,28 @@
+@import '../../theme.scss';
+
 .genre-options-container {
     width: 100%;
-
+    display: flex;
+    justify-content: center;
+    
     .genre-options-wrapper {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
+        display: inline-block;
+        font-family: 'Montserrat';
+        padding-bottom: 10px;
 
-        label {
-            padding: 0 5px;
+        .option {
+            padding:5px;
+            color: $color-secondary-1;
+            text-transform: capitalize;
         }
+
+        .option-button {
+            background: $color-primary-4;
+            border: unset;
+            border-radius: 5px;
+            font-weight: bold;
+            font-family: 'Montserrat';
+        }
+        
     }
 }

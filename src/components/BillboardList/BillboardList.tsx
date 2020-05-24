@@ -36,8 +36,10 @@ const BillboardList = (props: IBillboardListProps) => {
             <div className="billboard-list-wrapper">
                 { fetching ? <Loading /> : 
                     <div className="billboard-list">
-                        <GenreOptions genre={genre} setGenre={setGenre} />
-                        <SearchOptions searchedMovie={searchedMovie} searchMovie={searchMovie} />
+                        <div className="options-wrapper">
+                            <GenreOptions genre={genre} setGenre={setGenre} />
+                            <SearchOptions searchedMovie={searchedMovie} searchMovie={searchMovie} />
+                        </div>
                         { sortList().map(movie => <Movie key={movie.movieTitle} movie={movie} deleteMovie={deleteMovie}></Movie>) }
                     </div>
                 }
