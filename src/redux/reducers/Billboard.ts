@@ -9,7 +9,7 @@ const initialBillboard: IBillboardState = {
         {movieTitle: "The Help", movieGenres: ["drama"], movieWatched: true, order: 1},
         {movieTitle: "Mean Girls", movieGenres: ["comedy"], movieWatched: false, order: 2},
         {movieTitle: "Saw", movieGenres: ["horror"], movieWatched: true, order: 3},
-        {movieTitle: "Cloudy with a Chance of Meatballs", movieGenres: ["animation", "bonito"], movieWatched: false, order: 4}
+        {movieTitle: "Cloudy with a Chance of Meatballs", movieGenres: ["animation"], movieWatched: false, order: 4}
     ],
     searchedMovie: ''
 };
@@ -61,6 +61,11 @@ const billboard = (state = initialBillboard, action: IBillboardAction) => {
                 ...state,
                 fetching: false,
                 searchedMovie: action.searchedMovie
+            };
+        case AppConstants.WATCHED_MOVIE:
+            return {
+                ...state,
+                movies: action.movies
             };
         default:
             return {

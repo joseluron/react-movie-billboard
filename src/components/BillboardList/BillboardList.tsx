@@ -14,11 +14,12 @@ interface IBillboardListProps {
     searchedMovie: string,
     fetching: boolean,
     deleteMovie: Function,
-    searchMovie: Function
+    searchMovie: Function,
+    watchMovie: Function
 }
 
 const BillboardList = (props: IBillboardListProps) => {
-    const { fetching, movies, searchedMovie, deleteMovie, searchMovie } = props;
+    const { fetching, movies, searchedMovie, deleteMovie, searchMovie, watchMovie } = props;
     const [genre, setGenre] = useState('');
 
     const sortList = (): Array<IMovie> => {
@@ -40,7 +41,7 @@ const BillboardList = (props: IBillboardListProps) => {
                             <GenreOptions genre={genre} setGenre={setGenre} />
                             <SearchOptions searchedMovie={searchedMovie} searchMovie={searchMovie} />
                         </div>
-                        { sortList().map(movie => <Movie key={movie.movieTitle} movie={movie} deleteMovie={deleteMovie}></Movie>) }
+                        { sortList().map(movie => <Movie key={movie.movieTitle} movie={movie} deleteMovie={deleteMovie} watchMovie={watchMovie} />) }
                     </div>
                 }
             </div>

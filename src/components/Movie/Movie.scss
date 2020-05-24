@@ -16,6 +16,11 @@
         color: $color-secondary-1;
         font-family: 'Montserrat';
 
+        .movie-watched {
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+        
         .movie-title {
             padding-bottom: 5px;
             font-weight: bold;

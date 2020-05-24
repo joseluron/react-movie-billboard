@@ -8,6 +8,7 @@ class AppConstants {
     public static readonly DELETED_MOVIE_SUCCESS = 'DELETED_MOVIE_SUCCESS';
     public static readonly SEARCH_MOVIE = 'SEARCH_MOVIE';
     public static readonly SEARCHED_MOVIE_SUCCESS = 'SEARCHED_MOVIE_SUCCESS';
+    public static readonly WATCHED_MOVIE = 'WATCHED_MOVIE';
 
 }
 

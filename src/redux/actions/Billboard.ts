@@ -56,6 +56,13 @@ const foundMovie = (searchedMovie: string): AnyAction => {
     };
 };
 
+const watchedMovie = (watchedMovies: Array<IMovie>): AnyAction => {
+    return {
+        type: AppConstants.WATCHED_MOVIE,
+        movies: watchedMovies
+    };
+};
+
 // ACTIONS
 export const getBillboard = () => (dispatch: Store['dispatch']) => {
     dispatch(fetchBillboard());
@@ -96,4 +103,15 @@ export const searchMovie = (toSearchMovie: string) => (dispatch: Store['dispatch
     setTimeout(() => {
         dispatch(foundMovie(toSearchMovie));
     }, 3000);
+};
+
+export const watchMovie = (movieOrder: number) => (dispatch: Store['dispatch']) => {
+    const currentStore: IAppState = store.getState();
+    let toWatchMovie = [...currentStore.billboard.movies].map(movie => {
+        if (movie.order === movieOrder) {
+            movie.movieWatched = !movie.movieWatched;
+        }
+        return movie;
+    });
+    dispatch(watchedMovie(toWatchMovie));
 };

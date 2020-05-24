@@ -5,7 +5,7 @@ import './BillboardPage.scss';
 import BillboardList from '../../components/BillboardList/BillboardList';
 import AddMovie from '../../components/AddMovie/AddMovie';
 
-import { getBillboard, addNewMovie, deleteMovie, searchMovie } from '../../redux/actions/Billboard';
+import { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie } from '../../redux/actions/Billboard';
 import { IAppState, IBillboardState } from '../../App.types';
 
 interface IBillboardPageProps {
@@ -13,11 +13,12 @@ interface IBillboardPageProps {
     getBillboard: Function,
     addNewMovie: Function,
     deleteMovie: Function,
-    searchMovie: Function
+    searchMovie: Function,
+    watchMovie: Function
 }
 
 const BillboardPage = (props: IBillboardPageProps) => {
-    const { getBillboard, addNewMovie, deleteMovie, searchMovie, billboard } = props;
+    const { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie, billboard } = props;
     const { fetched, fetching, movies, searchedMovie } = billboard;
 
     useEffect(() => {
@@ -25,12 +26,12 @@ const BillboardPage = (props: IBillboardPageProps) => {
             getBillboard();
         }
     }, [fetched, getBillboard]);
-    
+
     return (
         <div className="billboard-page-container">
             <div className="billboard-page-wrapper">
                 <AddMovie addNewMovie={addNewMovie} />
-                <BillboardList movies={movies} searchedMovie={searchedMovie} fetching={fetching} deleteMovie={deleteMovie} searchMovie={searchMovie} />
+                <BillboardList movies={movies} searchedMovie={searchedMovie} fetching={fetching} deleteMovie={deleteMovie} searchMovie={searchMovie} watchMovie={watchMovie} />
             </div>
         </div>
     );
@@ -40,4 +41,4 @@ const mapStateToProps = (state: IAppState) => ({
     billboard: state.billboard
 });
 
-export default connect( mapStateToProps, { getBillboard, addNewMovie, deleteMovie, searchMovie } )(BillboardPage);
+export default connect(mapStateToProps, { getBillboard, addNewMovie, deleteMovie, searchMovie, watchMovie })(BillboardPage);
