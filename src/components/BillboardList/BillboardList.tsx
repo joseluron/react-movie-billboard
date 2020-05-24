@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import './BillboardList.scss';
 
@@ -30,16 +30,14 @@ const BillboardList = (props: IBillboardListProps) => {
         }
     },[presetGenre]);
 
-    const sortList = (): Array<IMovie> => {
-        let orderedMovies = [...movies].sort((a, b) => (a.order > b.order ? 1 : -1)).sort((a, b) => (a.movieWatched === b.movieWatched ? 0 : a.movieWatched ? 1 : -1));
-
-        orderedMovies = genre ? orderedMovies.filter(movie => movie.movieGenres.includes(genre)) : orderedMovies;
-
+    const sortList = useCallback(() => {
+        let orderedMovies = genre ? movies.filter(movie => movie.movieGenres.includes(genre)) : [...movies];
         orderedMovies = searchedMovie ? orderedMovies.filter(movie => movie.movieTitle.toLowerCase().includes(searchedMovie.toLowerCase())): orderedMovies;
+        orderedMovies = orderedMovies.sort((a, b) => (a.order > b.order ? 1 : -1)).sort((a, b) => (a.movieWatched === b.movieWatched ? 0 : a.movieWatched ? 1 : -1));
 
         return orderedMovies;
-    };
-    
+    }, [movies, genre, searchedMovie]);
+        
     return (
         <div className="billboard-list-container">
             <div className="billboard-list-wrapper">
@@ -49,7 +47,10 @@ const BillboardList = (props: IBillboardListProps) => {
                             <GenreOptions genre={genre} setGenre={setGenre} />
                             <SearchOptions searchedMovie={searchedMovie} searchMovie={searchMovie} />
                         </div>
-                        { sortList().map(movie => <Movie key={movie.movieTitle} movie={movie} deleteMovie={deleteMovie} watchMovie={watchMovie} editMovie={editMovie} />) }
+                        <div className="movie-list">
+                            { sortList().map(movie => <Movie key={movie.movieTitle} movie={movie} deleteMovie={deleteMovie} watchMovie={watchMovie} editMovie={editMovie} />) }
+                        </div>
+
                     </div>
                 }
             </div>

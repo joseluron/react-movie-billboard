@@ -2,13 +2,26 @@
 
 .add-movie-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     
     .add-movie-wrapper {
         display: flex;
         justify-content: center;
-        flex-direction: row;
+        align-items: center;
+        flex-direction: column;
         padding-bottom: 10px;
 
+        .header-tag {
+            padding-bottom: 15px;
+            font-family: 'Montserrat';
+            color: $color-primary-4;
+            font-size: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
         .inputs-family {
             width: 250px;
             display: flex;
@@ -32,13 +45,14 @@
 
             .added-genres {
                 display: flex;
-                justify-content: flex-start;
                 flex-direction: column;
+                text-align: left;
                 padding-bottom: 15px;                
 
                 span {
                     padding-left: 15px;
                     color: $color-secondary-1;
+                    word-wrap: break-word;
                 }
             }
 

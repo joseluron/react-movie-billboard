@@ -2,7 +2,7 @@
 
 .movie-container {
     margin: 10px auto;
-    max-width: 200px;
+    width: 200px;
     
     .movie-wrapper {
         padding: 15px;
@@ -42,6 +42,7 @@
             
             span {
                 padding: 0 5px;
+                word-break: break-all;
             }
         }
 

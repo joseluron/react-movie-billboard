@@ -16,5 +16,10 @@
             border-radius: 5px;
             padding:10px;
         }
+
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 }

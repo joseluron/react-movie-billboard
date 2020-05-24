@@ -102,11 +102,8 @@ export const deleteMovie = (movieOrder: number) => (dispatch: Store['dispatch'])
     dispatch(eraseMovie());
     setTimeout(() => {
         const currentStore: IAppState = store.getState();
-        const filteredMovies = [...currentStore.billboard.movies].filter(movie => movie.order !== movieOrder);
-        const reorderedMovies = [...filteredMovies].map((movie, index) => {
-            movie.order = index + 1;
-            return movie;
-        });
+        const filteredMovies = currentStore.billboard.movies.filter(movie => movie.order !== movieOrder);
+        const reorderedMovies = filteredMovies.map((movie, index) => { return { ...movie, order: index + 1 } });
         dispatch(erasedMovie(reorderedMovies));
     }, 3000);
 };
@@ -120,7 +117,8 @@ export const searchMovie = (toSearchMovie: string) => (dispatch: Store['dispatch
 
 export const watchMovie = (movieOrder: number) => (dispatch: Store['dispatch']) => {
     const currentStore: IAppState = store.getState();
-    let toWatchMovie = [...currentStore.billboard.movies].map(movie => {
+    let toWatchMovie = currentStore.billboard.movies.map(movie => 
+        {
         if (movie.order === movieOrder) {
             movie.movieWatched = !movie.movieWatched;
         }
@@ -133,7 +131,7 @@ export const editMovie = (movieOrder: number, movieEditedTitle: string) => (disp
     dispatch(changeMovie());
     setTimeout(() => {
         const currentStore: IAppState = store.getState();
-        const editedMovies = [...currentStore.billboard.movies].map(movie => {
+        const editedMovies = currentStore.billboard.movies.map(movie => {
             if (movie.order === movieOrder) {
                 movie.movieTitle = movieEditedTitle;
             }

@@ -17,6 +17,11 @@ const Movie = (props: IMovieProps) => {
     const [editing, setEditing] = useState(false);
     const [toEditTitle, setToEditTitle] = useState(movie.movieTitle);
     const [randomNumber] = useState(Math.floor(Math.random() * 2));
+
+    const cancelEdit = (): void => {
+        setEditing(false);
+        setToEditTitle(movie.movieTitle);
+    };
     
     return (
         <div className="movie-container" >
@@ -39,7 +44,7 @@ const Movie = (props: IMovieProps) => {
                     { editing ? 
                         <React.Fragment>
                             <button className="edit-button" onClick={() => editMovie(movie.order, toEditTitle)}>Save</button>
-                            <button className="edit-button" onClick={() => setEditing(false)}>Cancel</button>
+                            <button className="edit-button" onClick={() => cancelEdit()}>Cancel</button>
                         </React.Fragment>
                         :
                         <button className="edit-button" onClick={() => setEditing(true)}>Edit</button>

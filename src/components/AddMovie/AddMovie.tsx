@@ -32,6 +32,7 @@ const AddMovie = (props: IAddMovieProps) => {
                 movieGenres: toAddMovieGenres
             };
             setMovieTitle('');
+            setMovieGenre('');
             setMovieGenres(new Array<string>());
 
             addNewMovie(toAddMovieData);
@@ -41,6 +42,7 @@ const AddMovie = (props: IAddMovieProps) => {
     return (
         <div className="add-movie-container">
             <div className="add-movie-wrapper">
+                <span className="header-tag">Movie Billboard</span>
                 <div className="inputs-family">
                     <div className="movie-title input-combo">
                         <span>Title: </span>
